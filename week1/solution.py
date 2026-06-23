@@ -1,7 +1,14 @@
 """
-Website summarizer using Ollama instead of OpenAI.
+Day 2 challenge: Upgrade the Day 1 website summarizer to use a local Ollama model
+instead of the paid OpenAI API.
+
+Usage:
+    uv run week1/solution.py <url>
+    uv run week1/solution.py  # prompts for URL
 """
 
+import sys
+import requests
 from openai import OpenAI
 from scraper import fetch_website_contents
 
@@ -22,31 +29,43 @@ If it includes news or announcements, then summarize these too.
 """
 
 
-def messages_for(website):
-    """Create message list for the LLM."""
+def check_ollama():
+    try:
+        resp = requests.get("http://localhost:11434", timeout=3)
+        return b"Ollama" in resp.content
+    except requests.ConnectionError:
+        return False
+
+
+def messages_for(website_text):
     return [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt_prefix + website}
+        {"role": "user", "content": user_prompt_prefix + website_text},
     ]
 
 
 def summarize(url):
-    """Fetch and summarize a website using Ollama."""
-    ollama = OpenAI(base_url=OLLAMA_BASE_URL, api_key='ollama')
-    website = fetch_website_contents(url)
+    ollama = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+    website_text = fetch_website_contents(url)
     response = ollama.chat.completions.create(
         model=MODEL,
-        messages=messages_for(website)
+        messages=messages_for(website_text),
     )
     return response.choices[0].message.content
 
 
 def main():
-    """Main entry point for testing."""
-    url = input("Enter a URL to summarize: ")
-    print("\nFetching and summarizing...\n")
-    summary = summarize(url)
-    print(summary)
+    if not check_ollama():
+        print("Error: Ollama is not running. Start it with: ollama serve")
+        sys.exit(1)
+
+    url = sys.argv[1] if len(sys.argv) > 1 else input("Enter a URL to summarize: ").strip()
+    if not url:
+        print("Error: no URL provided.")
+        sys.exit(1)
+
+    print(f"\nSummarizing {url} using {MODEL} via Ollama...\n")
+    print(summarize(url))
 
 
 if __name__ == "__main__":
