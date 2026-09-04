@@ -1,5 +1,9 @@
 # Dunkin' Campus Pricing Analysis
 
+> This project now lives in its own repo, kept up to date going forward:
+> **https://github.com/divyatejabitra/dunkin-pricing-simulation**
+> (this copy is left here for history and may not reflect later changes)
+
 Competitor pricing tool for the MKT465 Dunkin' capstone project (see the 9/24 preliminary
 market analysis deliverable: current price structure at Dunkin' and its competitors in the
 Rochester area, for regular hot coffee and lattes).
