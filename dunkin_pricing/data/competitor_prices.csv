@@ -1,0 +1,12 @@
+vendor,category,campus,url,hot_coffee_price,hot_coffee_size,latte_price,latte_size,found,verified,notes
+Dunkin' (off-campus reference),chain,off-campus,,3.00,medium,5.25,medium,True,True,User-provided estimate: hot coffee ~$3; latte $5-$5.50 (midpoint used)
+Starbucks - Wilson Commons,chain,on-campus,,3.25,medium,5.75,medium,True,True,User-provided estimate: hot coffee $3-$3.50; latte $5.50-$6 (midpoints used)
+Peet's Coffee - Wegmans Hall,chain,on-campus,,3.00,medium,5.00,medium,True,True,User-provided estimate: hot coffee ~$3; latte ~$5 (same range as Starbucks)
+Brew (on-campus),campus-cafe,on-campus,,3.00,medium,5.00,medium,True,True,User-provided estimate: hot coffee ~$3; latte ~$5 (same range as Starbucks)
+Equal Grounds,independent,off-campus,,,,,,False,False,No URL - needs manual entry (closest to River Campus)
+Java's,independent,off-campus,,,,,,False,False,No URL - needs manual entry
+Ugly Duck Coffee,independent,off-campus,,,,,,False,False,No URL - needs manual entry
+Layali Coffeehouse,independent,off-campus,,,,,,False,False,No URL - needs manual entry
+Winter Swan Coffee,independent,off-campus,,,,,,False,False,No URL - needs manual entry
+Albunn Coffee House,independent,off-campus,,,,,,False,False,No URL - needs manual entry
+Mercury Coffee,independent,off-campus,,,,,,False,False,No URL - needs manual entry
